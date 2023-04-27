@@ -1,0 +1,31 @@
+<mxfile host="Electron" modified="2023-04-25T05:50:40.453Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="wdeDsRkRbvMYL1ng-4Su" version="21.2.1" type="device">
+  <diagram name="Page-1" id="cnqhx27q_BA6FtUvTpD-">
+    <mxGraphModel dx="1098" dy="988" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="AcWbom_f3_M_U6pNJg91-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=0;strokeWidth=1;shadow=1;strokeColor=#374057;fontColor=#374057;" parent="1" source="AcWbom_f3_M_U6pNJg91-2" target="AcWbom_f3_M_U6pNJg91-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AcWbom_f3_M_U6pNJg91-2" value="Exigences" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontColor=#374057;strokeColor=#374057;fontStyle=0;fontSize=13;labelBackgroundColor=none;labelBorderColor=none;spacingTop=0;spacing=0;spacingLeft=0;spacingBottom=0;spacingRight=0;fontFamily=Arial;" parent="1" vertex="1">
+          <mxGeometry x="220" y="200" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="AcWbom_f3_M_U6pNJg91-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=0;strokeWidth=1;shadow=1;strokeColor=#374057;fontColor=#374057;" parent="1" source="AcWbom_f3_M_U6pNJg91-3" target="AcWbom_f3_M_U6pNJg91-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AcWbom_f3_M_U6pNJg91-3" value="Conception" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontColor=#374057;strokeColor=#374057;fontStyle=0;fontSize=13;labelBackgroundColor=none;labelBorderColor=none;spacingTop=0;spacing=0;spacingLeft=0;spacingBottom=0;spacingRight=0;fontFamily=Arial;" parent="1" vertex="1">
+          <mxGeometry x="280" y="280" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="AcWbom_f3_M_U6pNJg91-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;endArrow=block;endFill=0;strokeWidth=1;shadow=1;strokeColor=#374057;fontColor=#374057;" parent="1" source="AcWbom_f3_M_U6pNJg91-4" target="AcWbom_f3_M_U6pNJg91-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AcWbom_f3_M_U6pNJg91-4" value="Implémentation" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontColor=#374057;strokeColor=#374057;fontStyle=0;fontSize=13;labelBackgroundColor=none;labelBorderColor=none;spacingTop=0;spacing=0;spacingLeft=0;spacingBottom=0;spacingRight=0;fontFamily=Arial;" parent="1" vertex="1">
+          <mxGeometry x="340" y="360" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="AcWbom_f3_M_U6pNJg91-5" value="Validation" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontColor=#374057;strokeColor=#374057;fontStyle=0;fontSize=13;labelBackgroundColor=none;labelBorderColor=none;spacingTop=0;spacing=0;spacingLeft=0;spacingBottom=0;spacingRight=0;fontFamily=Arial;" parent="1" vertex="1">
+          <mxGeometry x="400" y="440" width="120" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

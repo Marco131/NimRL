@@ -1,0 +1,11 @@
+C:\Users\Marco.Rdrgs2\Code\TPI_Marco_Rodrigues\NimRL\Src\NimRL\NimRL\bin\Debug\NimRL.exe.config
+C:\Users\Marco.Rdrgs2\Code\TPI_Marco_Rodrigues\NimRL\Src\NimRL\NimRL\bin\Debug\NimRL.exe
+C:\Users\Marco.Rdrgs2\Code\TPI_Marco_Rodrigues\NimRL\Src\NimRL\NimRL\bin\Debug\NimRL.pdb
+C:\Users\Marco.Rdrgs2\Code\TPI_Marco_Rodrigues\NimRL\Src\NimRL\NimRL\obj\Debug\NimRL.csproj.AssemblyReference.cache
+C:\Users\Marco.Rdrgs2\Code\TPI_Marco_Rodrigues\NimRL\Src\NimRL\NimRL\obj\Debug\NimRL.csproj.SuggestedBindingRedirects.cache
+C:\Users\Marco.Rdrgs2\Code\TPI_Marco_Rodrigues\NimRL\Src\NimRL\NimRL\obj\Debug\NimRL.FrmMain.resources
+C:\Users\Marco.Rdrgs2\Code\TPI_Marco_Rodrigues\NimRL\Src\NimRL\NimRL\obj\Debug\NimRL.Properties.Resources.resources
+C:\Users\Marco.Rdrgs2\Code\TPI_Marco_Rodrigues\NimRL\Src\NimRL\NimRL\obj\Debug\NimRL.csproj.GenerateResource.cache
+C:\Users\Marco.Rdrgs2\Code\TPI_Marco_Rodrigues\NimRL\Src\NimRL\NimRL\obj\Debug\NimRL.csproj.CoreCompileInputs.cache
+C:\Users\Marco.Rdrgs2\Code\TPI_Marco_Rodrigues\NimRL\Src\NimRL\NimRL\obj\Debug\NimRL.exe
+C:\Users\Marco.Rdrgs2\Code\TPI_Marco_Rodrigues\NimRL\Src\NimRL\NimRL\obj\Debug\NimRL.pdb

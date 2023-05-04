@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.0.0">
-  <zoom_level>7</zoom_level>
+  <zoom_level>9</zoom_level>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>364</x>
-      <y>161</y>
-      <w>1050</w>
-      <h>735</h>
+      <x>972</x>
+      <y>108</y>
+      <w>1350</w>
+      <h>945</h>
     </coordinates>
     <panel_attributes>Model
 --</panel_attributes>
@@ -16,85 +16,86 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>210</y>
-      <w>259</w>
-      <h>350</h>
+      <x>504</x>
+      <y>108</y>
+      <w>333</w>
+      <h>513</h>
     </coordinates>
     <panel_attributes>GameController
 --
 - &lt;const&gt; _DEFAULT_PLAYER  = 1
 - &lt;const&gt; _MATCHES_NB = 20
 
+- aiController : AIController
+
 + player1 : Player
 + player2 : Player
-+ currentPlayer : int
++ currentPlayerNb : int
 
 + matchesNb : int
 + hasGameEnded : bool
 --
-+ Ctor()
++ Ctor(Player, Player, AIController)
 
-+ UpdatePlayerTypes(PlayerType, PlayerType) : void
-+ UpdatePlayer1Type(PlayerType) : void
-+ UpdatePlayer2Type(PlayerType) : void
++ MakePlayerRobot(int, Agent)
++ MakePlayerHuman(int)
 
 + PrepareGame() : void
 
 + GetMatchesNb() : int
 + GetPlayersType() : string[]
-+ GetPlayersLastAction() : int[]
-+ GetPlayersGameActions() : List&lt;int&gt;[]
++ GetPlayersLastAction() : int?[]
++ GetPlayersGameActions() : int[][]
 + IsRvR() : bool
 + GetCurrentPlayer() : int
++ ChangeCurrentPlayer() : void
 + GetWinner : Player
 + GetLoser : Player
 
 + PlayGamesAutomatically(int) : void
 + ContinuePlaying(int) : void
+- EndGame() : void
+- PickMatches : void
 - RequestRobotAction() : void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>616</y>
-      <w>259</w>
-      <h>203</h>
+      <x>504</x>
+      <y>729</y>
+      <w>333</w>
+      <h>261</h>
     </coordinates>
     <panel_attributes>AIController
 --
 - &lt;static&gt; &lt;readonly&gt; _OPTIMIZED_CHOICES : List&lt;int&gt;
 - &lt;const &gt;_DEFAULT_ROUNDS_NB = 0
 
-+ player1 : Player
-+ player2 : Player
-
 + roundsNb : int
 + agent : Agent
 --
-+ Ctor(Player, Player)
++ Ctor()
 
 + GetActionState() : string
 + GetActionValues() : Dict&lt;int, Dict&lt;int, float&gt;&gt; 
 + CalculateLearningPercentage() : float
 
-+ RequestReinforcementUpdate() : void</panel_attributes>
++ RequestReinforcementUpdate(int[], int[]) : void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>385</x>
-      <y>308</y>
-      <w>252</w>
-      <h>182</h>
+      <x>999</x>
+      <y>297</y>
+      <w>324</w>
+      <h>234</h>
     </coordinates>
     <panel_attributes>&lt;abstract&gt;
 Player
 --
-+ currentPlayerType : PlayerType
++ playerType : PlayerType
 + currentEndGameState : EndGameState
 + lastChosenAction : int?
 + gameActions : List&lt;int&gt;
@@ -102,9 +103,12 @@ Player
 --
 + Ctor(PlayerType)
 
++ PrepareForNewGame() : void
 + ChangeCurrentEndGameState(EndGameState) : void
++ UpdateLastChosenAction(int) : void
 # AddActionToList() : void
 + EmptyActionList() : void
++ NullLastChosenAction() : void
 
 + &lt;abstract&gt; GetName() : string
 + ToString() : string
@@ -114,10 +118,10 @@ Player
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>518</x>
-      <y>203</y>
-      <w>77</w>
-      <h>63</h>
+      <x>1170</x>
+      <y>162</y>
+      <w>99</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>&lt;Enum&gt;
 PlayerType
@@ -129,10 +133,10 @@ Robot : 1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>546</x>
-      <y>259</y>
-      <w>21</w>
-      <h>63</h>
+      <x>1206</x>
+      <y>234</y>
+      <w>27</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=.&gt;</panel_attributes>
     <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
@@ -140,10 +144,10 @@ Robot : 1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1064</x>
-      <y>511</y>
-      <w>266</w>
-      <h>182</h>
+      <x>1872</x>
+      <y>558</y>
+      <w>342</w>
+      <h>234</h>
     </coordinates>
     <panel_attributes>Agent
 --
@@ -166,10 +170,10 @@ Robot : 1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1015</x>
-      <y>770</y>
-      <w>364</w>
-      <h>91</h>
+      <x>1809</x>
+      <y>891</y>
+      <w>468</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>Policy
 --
@@ -177,7 +181,7 @@ Robot : 1</panel_attributes>
 
 + valuesMapByMatchesNb : Dict&lt;int, Dict&lt;int, float&gt; &gt;
 --
-+ PickBest(int) : int
++ PickAction(int) : int
 + UpdateValues(int, int, bool) : void
 + HasEnoughInformation() : bool
 - AddStep(int) : void
@@ -188,10 +192,10 @@ Robot : 1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1190</x>
-      <y>686</y>
-      <w>21</w>
-      <h>98</h>
+      <x>2034</x>
+      <y>783</y>
+      <w>27</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;</panel_attributes>
     <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
@@ -199,55 +203,50 @@ Robot : 1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>707</x>
-      <y>238</y>
-      <w>252</w>
-      <h>119</h>
+      <x>1413</x>
+      <y>207</y>
+      <w>324</w>
+      <h>153</h>
     </coordinates>
     <panel_attributes>Human
 --
-- &lt;const&gt; _NAME = "Human"
++ &lt;const&gt; NAME = "Human"
 - &lt;const&gt; _TYPE = PlayerType.Human
 --
 + Ctor()
 
-+ UpdateLastChosenAction(int) : void
-
-+ GetName() : string
-+ ToString() : string</panel_attributes>
++ GetName() : string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>707</x>
-      <y>371</y>
-      <w>252</w>
-      <h>147</h>
+      <x>1413</x>
+      <y>378</y>
+      <w>324</w>
+      <h>189</h>
     </coordinates>
     <panel_attributes>Robot
 --
-- &lt;const&gt; _NAME = "Robot"
++ &lt;const&gt; NAME = "Robot"
 - &lt;const&gt; _TYPE = PlayerType.Robot
 
 + agent : Agent
 --
 + Ctor(Agent)
 
-- UpdateLastChosenAction(int) : void
 + GetAction(int) : int
 
-+ GetName() : string
-+ ToString() : string</panel_attributes>
++ GetName() : string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1162</x>
-      <y>406</y>
-      <w>77</w>
-      <h>63</h>
+      <x>1998</x>
+      <y>423</y>
+      <w>99</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>&lt;Enum&gt;
 ActionsState
@@ -259,10 +258,10 @@ Chosen : 1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
-      <y>315</y>
-      <w>91</w>
-      <h>84</h>
+      <x>1314</x>
+      <y>306</y>
+      <w>117</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;100.0;110.0;10.0</additional_attributes>
@@ -270,10 +269,10 @@ Chosen : 1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
-      <y>378</y>
-      <w>91</w>
-      <h>91</h>
+      <x>1314</x>
+      <y>387</y>
+      <w>117</w>
+      <h>117</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;110.0;110.0</additional_attributes>
@@ -281,10 +280,10 @@ Chosen : 1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1190</x>
-      <y>462</y>
-      <w>21</w>
-      <h>63</h>
+      <x>2034</x>
+      <y>495</y>
+      <w>27</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=.&gt;</panel_attributes>
     <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
@@ -292,21 +291,21 @@ Chosen : 1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>252</x>
-      <y>350</y>
-      <w>147</w>
-      <h>35</h>
+      <x>828</x>
+      <y>369</y>
+      <w>189</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;190.0;30.0</additional_attributes>
+    <additional_attributes>10.0;10.0;190.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>826</x>
-      <y>511</y>
-      <w>252</w>
-      <h>105</h>
+      <x>1566</x>
+      <y>558</y>
+      <w>324</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;340.0;130.0</additional_attributes>
@@ -314,21 +313,21 @@ Chosen : 1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>252</x>
-      <y>595</y>
-      <w>826</w>
-      <h>112</h>
+      <x>828</x>
+      <y>666</y>
+      <w>1062</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;140.0;1160.0;10.0</additional_attributes>
+    <additional_attributes>10.0;180.0;1160.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>427</x>
-      <y>203</y>
-      <w>77</w>
-      <h>63</h>
+      <x>1053</x>
+      <y>162</y>
+      <w>99</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>&lt;Enum&gt;
 EndGameState
@@ -341,10 +340,10 @@ Loser : 2</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>455</x>
-      <y>259</y>
-      <w>21</w>
-      <h>63</h>
+      <x>1089</x>
+      <y>234</y>
+      <w>27</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=.&gt;</panel_attributes>
     <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
@@ -352,10 +351,10 @@ Loser : 2</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1498</x>
-      <y>651</y>
-      <w>315</w>
-      <h>217</h>
+      <x>2430</x>
+      <y>738</y>
+      <w>405</w>
+      <h>306</h>
     </coordinates>
     <panel_attributes>This dictionnary maps
 values to actions, to a number of matches
@@ -375,29 +374,91 @@ Example
    ...
 }
 
-bg=white</panel_attributes>
+
+/*todo change*/
+
+bg=white
+fg=red</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>252</x>
-      <y>364</y>
-      <w>147</w>
-      <h>343</h>
+      <x>2268</x>
+      <y>846</y>
+      <w>180</w>
+      <h>117</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;470.0;190.0;10.0</additional_attributes>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;110.0;180.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1372</x>
-      <y>735</y>
-      <w>140</w>
-      <h>91</h>
+      <x>657</x>
+      <y>612</y>
+      <w>27</w>
+      <h>135</h>
     </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;110.0;180.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>0</x>
+      <y>450</y>
+      <w>252</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>View
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>243</x>
+      <y>522</y>
+      <w>279</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;290.0;380.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>243</x>
+      <y>342</y>
+      <w>279</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;210.0;290.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>828</x>
+      <y>189</y>
+      <w>243</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>10.0;20.0;250.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>828</x>
+      <y>126</y>
+      <w>360</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>10.0;90.0;260.0;10.0;380.0;40.0</additional_attributes>
   </element>
 </diagram>

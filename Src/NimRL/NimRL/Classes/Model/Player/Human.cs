@@ -9,7 +9,7 @@ namespace NimRL.Classes.Model.Player
     public class Human : Player
     {
         // Constants
-        private const string _NAME = "Human";
+        public const string NAME = "Human";
         private const PlayerType _TYPE = PlayerType.Human;
 
 
@@ -19,19 +19,12 @@ namespace NimRL.Classes.Model.Player
 
         // Methods
         /// <summary>
-        /// Updates last chosen action and adds it to the list
+        /// Gets the name of the class
         /// </summary>
-        /// <param name="action">new last chosen action</param>
-        public void UpdateLastChosenAction(int action)
-        {
-            this.LastChosenAction = action;
-
-            AddActionToList();
-        }
-
+        /// <returns>Name of the class</returns>
         public override string GetName()
         {
-            return Human._NAME;
+            return Human.NAME;
         }
     }
 }

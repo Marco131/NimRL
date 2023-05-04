@@ -49,10 +49,12 @@
   <ItemGroup>
     <Compile Include="Classes\Controller\AIController.cs" />
     <Compile Include="Classes\Controller\GameController.cs" />
+    <Compile Include="Classes\Model\AI\Agent.cs" />
     <Compile Include="Classes\Model\Player\EndGameState.cs" />
     <Compile Include="Classes\Model\Player\Human.cs" />
     <Compile Include="Classes\Model\Player\Player.cs" />
     <Compile Include="Classes\Model\Player\PlayerType.cs" />
+    <Compile Include="Classes\Model\Player\Robot.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>

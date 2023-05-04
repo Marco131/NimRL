@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NimRL.Classes.Model.AI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace NimRL.Classes.Model.Player
     public abstract class Player
     {
         // Fields
-        private PlayerType _currentPlayerType;
+        private PlayerType _playerType;
         private EndGameState _currentEndGameState;
 
         private int? _lastChosenAction;
@@ -17,7 +18,7 @@ namespace NimRL.Classes.Model.Player
 
 
         // Properties
-        public PlayerType CurrentPlayerType { get => _currentPlayerType; protected set => _currentPlayerType = value; }
+        public PlayerType PlayerType { get => _playerType; protected set => _playerType = value; }
         public EndGameState CurrentEndGameState { get => _currentEndGameState; protected set => _currentEndGameState = value; }
 
         public int? LastChosenAction { get => _lastChosenAction; protected set => _lastChosenAction = value; }
@@ -27,7 +28,7 @@ namespace NimRL.Classes.Model.Player
         // Ctor
         public Player(PlayerType playerType)
         {
-            this.CurrentPlayerType = playerType;
+            this.PlayerType = playerType;
             this.CurrentEndGameState = EndGameState.None;
 
             this.LastChosenAction = null;
@@ -37,12 +38,33 @@ namespace NimRL.Classes.Model.Player
 
         // Methods
         /// <summary>
+        /// Prepares the player for a new game
+        /// </summary>
+        public void PrepareForNewGame()
+        {
+            ChangeCurrentEndGameState(EndGameState.None);
+            EmptyActionList();
+            NullLastChosenAction();
+        }
+
+        /// <summary>
         /// Changes the current end game state
         /// </summary>
         /// <param name="newEndGameState">New end game state</param>
         public void ChangeCurrentEndGameState(EndGameState newEndGameState)
         {
             this.CurrentEndGameState = newEndGameState;
+        }
+
+        /// <summary>
+        /// Updates last chosen action and adds it to the list
+        /// </summary>
+        /// <param name="action">new last chosen action</param>
+        public void UpdateLastChosenAction(int action)
+        {
+            this.LastChosenAction = action;
+
+            AddActionToList();
         }
 
         /// <summary>
@@ -60,34 +82,24 @@ namespace NimRL.Classes.Model.Player
         /// <summary>
         /// Empties the action list
         /// </summary>
-        public void EmptyActionList()
+        private void EmptyActionList()
         {
             this.GameActions.Clear();
         }
 
+        /// <summary>
+        /// Nulls the last chosen action
+        /// </summary>
+        private void NullLastChosenAction()
+        {
+            this.LastChosenAction = null;
+        }
 
         public abstract string GetName();
 
         public override string ToString()
         {
-            string result;
-
-            if (this.CurrentEndGameState == EndGameState.None)
-            {
-                result = "The players last action were : ";
-                result += string.Join("-", this.GameActions);
-            }
-            else
-            {
-                if (this.CurrentEndGameState == EndGameState.Winner)
-                {
-                    result = "The player is a winner";
-                }
-                else // Loser
-                {
-                    result = "The player is a loser";
-                }
-            }
+            string result = this.GetName();
 
             return result;
         }

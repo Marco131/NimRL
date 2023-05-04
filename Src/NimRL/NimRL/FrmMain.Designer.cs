@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint25 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 10D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint26 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 20D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint27 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 3D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 10D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 20D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 3D);
             this.pnlTransparentArea = new System.Windows.Forms.Panel();
             this.pnlAIArea = new System.Windows.Forms.Panel();
             this.lblOptionsByMatchesNb = new System.Windows.Forms.Label();
@@ -40,7 +40,6 @@
             this.pnlLearningBarContainer = new System.Windows.Forms.Panel();
             this.pnlLearningBar = new System.Windows.Forms.Panel();
             this.lblLearning = new System.Windows.Forms.Label();
-            this.lblActonsState = new System.Windows.Forms.Label();
             this.lblRounds = new System.Windows.Forms.Label();
             this.lblAIArea = new System.Windows.Forms.Label();
             this.btnOpenCloseAIArea = new System.Windows.Forms.Button();
@@ -55,7 +54,10 @@
             this.btnP1_1 = new System.Windows.Forms.Button();
             this.lblP1Name = new System.Windows.Forms.Label();
             this.pnlRvR = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btnAutoPlay_100 = new System.Windows.Forms.Button();
+            this.lblAutoPlay = new System.Windows.Forms.Label();
+            this.btnAutoPlay_10 = new System.Windows.Forms.Button();
+            this.btnAutoPlay_1 = new System.Windows.Forms.Button();
             this.pnlP2 = new System.Windows.Forms.Panel();
             this.lblP2RobotMessage = new System.Windows.Forms.Label();
             this.btnP2_3 = new System.Windows.Forms.Button();
@@ -64,11 +66,9 @@
             this.btnP2_1 = new System.Windows.Forms.Button();
             this.pbxFormIcon = new System.Windows.Forms.PictureBox();
             this.pnlMatches = new System.Windows.Forms.Panel();
+            this.btnStartGame = new System.Windows.Forms.Button();
             this.cmbP1 = new System.Windows.Forms.ComboBox();
             this.cmbP2 = new System.Windows.Forms.ComboBox();
-            this.btnAutoPlay_1000 = new System.Windows.Forms.Button();
-            this.btnAutoPlay_100 = new System.Windows.Forms.Button();
-            this.btnAutoPlay_10 = new System.Windows.Forms.Button();
             this.pnlTransparentArea.SuspendLayout();
             this.pnlAIArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -78,6 +78,7 @@
             this.pnlRvR.SuspendLayout();
             this.pnlP2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxFormIcon)).BeginInit();
+            this.pnlMatches.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTransparentArea
@@ -96,7 +97,6 @@
             this.pnlAIArea.Controls.Add(this.chart1);
             this.pnlAIArea.Controls.Add(this.pnlLearningBarContainer);
             this.pnlAIArea.Controls.Add(this.lblLearning);
-            this.pnlAIArea.Controls.Add(this.lblActonsState);
             this.pnlAIArea.Controls.Add(this.lblRounds);
             this.pnlAIArea.Controls.Add(this.lblAIArea);
             this.pnlAIArea.Controls.Add(this.btnOpenCloseAIArea);
@@ -108,7 +108,7 @@
             // lblOptionsByMatchesNb
             // 
             this.lblOptionsByMatchesNb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOptionsByMatchesNb.Location = new System.Drawing.Point(5, 70);
+            this.lblOptionsByMatchesNb.Location = new System.Drawing.Point(5, 55);
             this.lblOptionsByMatchesNb.Name = "lblOptionsByMatchesNb";
             this.lblOptionsByMatchesNb.Size = new System.Drawing.Size(295, 25);
             this.lblOptionsByMatchesNb.TabIndex = 4;
@@ -117,18 +117,18 @@
             // 
             // chart1
             // 
-            chartArea9.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea9);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
             this.chart1.Location = new System.Drawing.Point(5, 98);
             this.chart1.Name = "chart1";
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series9.IsVisibleInLegend = false;
-            series9.Name = "Series1";
-            series9.Points.Add(dataPoint25);
-            series9.Points.Add(dataPoint26);
-            series9.Points.Add(dataPoint27);
-            this.chart1.Series.Add(series9);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.IsVisibleInLegend = false;
+            series2.Name = "Series1";
+            series2.Points.Add(dataPoint4);
+            series2.Points.Add(dataPoint5);
+            series2.Points.Add(dataPoint6);
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(30, 30);
             this.chart1.TabIndex = 5;
             // 
@@ -154,22 +154,12 @@
             // lblLearning
             // 
             this.lblLearning.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLearning.Location = new System.Drawing.Point(5, 150);
+            this.lblLearning.Location = new System.Drawing.Point(5, 155);
             this.lblLearning.Name = "lblLearning";
-            this.lblLearning.Size = new System.Drawing.Size(100, 25);
+            this.lblLearning.Size = new System.Drawing.Size(100, 20);
             this.lblLearning.TabIndex = 6;
             this.lblLearning.Text = "Learning Level : ";
             this.lblLearning.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblActonsState
-            // 
-            this.lblActonsState.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActonsState.Location = new System.Drawing.Point(300, 30);
-            this.lblActonsState.Name = "lblActonsState";
-            this.lblActonsState.Size = new System.Drawing.Size(100, 25);
-            this.lblActonsState.TabIndex = 3;
-            this.lblActonsState.Text = "Actions : ";
-            this.lblActonsState.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblRounds
             // 
@@ -333,24 +323,63 @@
             // 
             this.pnlRvR.BackColor = System.Drawing.Color.White;
             this.pnlRvR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlRvR.Controls.Add(this.btnAutoPlay_1000);
-            this.pnlRvR.Controls.Add(this.label2);
             this.pnlRvR.Controls.Add(this.btnAutoPlay_100);
+            this.pnlRvR.Controls.Add(this.lblAutoPlay);
             this.pnlRvR.Controls.Add(this.btnAutoPlay_10);
+            this.pnlRvR.Controls.Add(this.btnAutoPlay_1);
             this.pnlRvR.Location = new System.Drawing.Point(250, 300);
             this.pnlRvR.Name = "pnlRvR";
             this.pnlRvR.Size = new System.Drawing.Size(300, 150);
             this.pnlRvR.TabIndex = 5;
             // 
-            // label2
+            // btnAutoPlay_100
             // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(100, 5);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 25);
-            this.label2.TabIndex = 0;
-            this.label2.Text = " Auto Play";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnAutoPlay_100.BackColor = System.Drawing.Color.White;
+            this.btnAutoPlay_100.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutoPlay_100.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAutoPlay_100.Location = new System.Drawing.Point(200, 55);
+            this.btnAutoPlay_100.Name = "btnAutoPlay_100";
+            this.btnAutoPlay_100.Size = new System.Drawing.Size(45, 45);
+            this.btnAutoPlay_100.TabIndex = 3;
+            this.btnAutoPlay_100.Text = "100";
+            this.btnAutoPlay_100.UseVisualStyleBackColor = false;
+            this.btnAutoPlay_100.Click += new System.EventHandler(this.btnAutoPlay_100_Click);
+            // 
+            // lblAutoPlay
+            // 
+            this.lblAutoPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAutoPlay.Location = new System.Drawing.Point(100, 5);
+            this.lblAutoPlay.Name = "lblAutoPlay";
+            this.lblAutoPlay.Size = new System.Drawing.Size(100, 25);
+            this.lblAutoPlay.TabIndex = 0;
+            this.lblAutoPlay.Text = " Auto Play";
+            this.lblAutoPlay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnAutoPlay_10
+            // 
+            this.btnAutoPlay_10.BackColor = System.Drawing.Color.White;
+            this.btnAutoPlay_10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutoPlay_10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAutoPlay_10.Location = new System.Drawing.Point(128, 55);
+            this.btnAutoPlay_10.Name = "btnAutoPlay_10";
+            this.btnAutoPlay_10.Size = new System.Drawing.Size(45, 45);
+            this.btnAutoPlay_10.TabIndex = 2;
+            this.btnAutoPlay_10.Text = "10";
+            this.btnAutoPlay_10.UseVisualStyleBackColor = false;
+            this.btnAutoPlay_10.Click += new System.EventHandler(this.btnAutoPlay_10_Click);
+            // 
+            // btnAutoPlay_1
+            // 
+            this.btnAutoPlay_1.BackColor = System.Drawing.Color.White;
+            this.btnAutoPlay_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutoPlay_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAutoPlay_1.Location = new System.Drawing.Point(55, 55);
+            this.btnAutoPlay_1.Name = "btnAutoPlay_1";
+            this.btnAutoPlay_1.Size = new System.Drawing.Size(45, 45);
+            this.btnAutoPlay_1.TabIndex = 1;
+            this.btnAutoPlay_1.Text = "1";
+            this.btnAutoPlay_1.UseVisualStyleBackColor = false;
+            this.btnAutoPlay_1.Click += new System.EventHandler(this.btnAutoPlay_1_Click);
             // 
             // pnlP2
             // 
@@ -436,10 +465,24 @@
             // pnlMatches
             // 
             this.pnlMatches.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.pnlMatches.Controls.Add(this.btnStartGame);
             this.pnlMatches.Location = new System.Drawing.Point(150, 75);
             this.pnlMatches.Name = "pnlMatches";
             this.pnlMatches.Size = new System.Drawing.Size(500, 175);
             this.pnlMatches.TabIndex = 2;
+            // 
+            // btnStartGame
+            // 
+            this.btnStartGame.BackColor = System.Drawing.Color.White;
+            this.btnStartGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStartGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartGame.Location = new System.Drawing.Point(155, 60);
+            this.btnStartGame.Name = "btnStartGame";
+            this.btnStartGame.Size = new System.Drawing.Size(190, 55);
+            this.btnStartGame.TabIndex = 4;
+            this.btnStartGame.Text = "Start Game";
+            this.btnStartGame.UseVisualStyleBackColor = false;
+            this.btnStartGame.Click += new System.EventHandler(this.btnStartGame_Click);
             // 
             // cmbP1
             // 
@@ -456,6 +499,7 @@
             this.cmbP1.Name = "cmbP1";
             this.cmbP1.Size = new System.Drawing.Size(120, 24);
             this.cmbP1.TabIndex = 1;
+            this.cmbP1.SelectedIndexChanged += new System.EventHandler(this.cmbP1_SelectedIndexChanged);
             // 
             // cmbP2
             // 
@@ -472,42 +516,7 @@
             this.cmbP2.Name = "cmbP2";
             this.cmbP2.Size = new System.Drawing.Size(120, 24);
             this.cmbP2.TabIndex = 3;
-            // 
-            // btnAutoPlay_1000
-            // 
-            this.btnAutoPlay_1000.BackColor = System.Drawing.Color.White;
-            this.btnAutoPlay_1000.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAutoPlay_1000.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAutoPlay_1000.Location = new System.Drawing.Point(200, 55);
-            this.btnAutoPlay_1000.Name = "btnAutoPlay_1000";
-            this.btnAutoPlay_1000.Size = new System.Drawing.Size(45, 45);
-            this.btnAutoPlay_1000.TabIndex = 3;
-            this.btnAutoPlay_1000.Text = "1000";
-            this.btnAutoPlay_1000.UseVisualStyleBackColor = false;
-            // 
-            // btnAutoPlay_100
-            // 
-            this.btnAutoPlay_100.BackColor = System.Drawing.Color.White;
-            this.btnAutoPlay_100.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAutoPlay_100.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAutoPlay_100.Location = new System.Drawing.Point(128, 55);
-            this.btnAutoPlay_100.Name = "btnAutoPlay_100";
-            this.btnAutoPlay_100.Size = new System.Drawing.Size(45, 45);
-            this.btnAutoPlay_100.TabIndex = 2;
-            this.btnAutoPlay_100.Text = "100";
-            this.btnAutoPlay_100.UseVisualStyleBackColor = false;
-            // 
-            // btnAutoPlay_10
-            // 
-            this.btnAutoPlay_10.BackColor = System.Drawing.Color.White;
-            this.btnAutoPlay_10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAutoPlay_10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAutoPlay_10.Location = new System.Drawing.Point(55, 55);
-            this.btnAutoPlay_10.Name = "btnAutoPlay_10";
-            this.btnAutoPlay_10.Size = new System.Drawing.Size(45, 45);
-            this.btnAutoPlay_10.TabIndex = 1;
-            this.btnAutoPlay_10.Text = "10";
-            this.btnAutoPlay_10.UseVisualStyleBackColor = false;
+            this.cmbP2.SelectedIndexChanged += new System.EventHandler(this.cmbP2_SelectedIndexChanged);
             // 
             // FrmMain
             // 
@@ -527,7 +536,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "FrmMain";
-            this.Text = "NimRL";
+            this.Text = "W";
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.pnlTransparentArea.ResumeLayout(false);
             this.pnlAIArea.ResumeLayout(false);
@@ -539,6 +548,7 @@
             this.pnlRvR.ResumeLayout(false);
             this.pnlP2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbxFormIcon)).EndInit();
+            this.pnlMatches.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -558,7 +568,6 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox pbxFormIcon;
         private System.Windows.Forms.Label lblRounds;
-        private System.Windows.Forms.Label lblActonsState;
         private System.Windows.Forms.Label lblLearning;
         private System.Windows.Forms.Panel pnlLearningBarContainer;
         private System.Windows.Forms.Panel pnlLearningBar;
@@ -577,10 +586,11 @@
         private System.Windows.Forms.Button btnP2_1;
         private System.Windows.Forms.Label lblP2RobotMessage;
         private System.Windows.Forms.Label lblP1RobotMessage;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnAutoPlay_1000;
+        private System.Windows.Forms.Label lblAutoPlay;
         private System.Windows.Forms.Button btnAutoPlay_100;
         private System.Windows.Forms.Button btnAutoPlay_10;
+        private System.Windows.Forms.Button btnAutoPlay_1;
+        private System.Windows.Forms.Button btnStartGame;
     }
 }
 

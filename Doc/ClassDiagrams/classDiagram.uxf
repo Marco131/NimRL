@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.0.0">
-  <zoom_level>9</zoom_level>
+  <zoom_level>3</zoom_level>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>972</x>
-      <y>108</y>
-      <w>1350</w>
-      <h>945</h>
+      <x>324</x>
+      <y>243</y>
+      <w>450</w>
+      <h>324</h>
     </coordinates>
     <panel_attributes>Model
 --</panel_attributes>
@@ -16,10 +16,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
-      <y>108</y>
-      <w>333</w>
-      <h>513</h>
+      <x>168</x>
+      <y>243</y>
+      <w>111</w>
+      <h>171</h>
     </coordinates>
     <panel_attributes>GameController
 --
@@ -62,10 +62,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
-      <y>729</y>
-      <w>333</w>
-      <h>261</h>
+      <x>168</x>
+      <y>450</y>
+      <w>111</w>
+      <h>87</h>
     </coordinates>
     <panel_attributes>AIController
 --
@@ -77,8 +77,7 @@
 --
 + Ctor()
 
-+ GetActionState() : string
-+ GetActionValues() : Dict&lt;int, Dict&lt;int, float&gt;&gt; 
++ GetActionValues() : Dict&lt;int, Dict&lt;int, int&gt;&gt; 
 + CalculateLearningPercentage() : float
 
 + RequestReinforcementUpdate(int[], int[]) : void</panel_attributes>
@@ -87,10 +86,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>999</x>
-      <y>297</y>
-      <w>324</w>
-      <h>234</h>
+      <x>333</x>
+      <y>306</y>
+      <w>108</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>&lt;abstract&gt;
 Player
@@ -118,10 +117,10 @@ Player
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1170</x>
-      <y>162</y>
-      <w>99</w>
-      <h>81</h>
+      <x>390</x>
+      <y>261</y>
+      <w>33</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>&lt;Enum&gt;
 PlayerType
@@ -133,10 +132,10 @@ Robot : 1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1206</x>
-      <y>234</y>
-      <w>27</w>
-      <h>81</h>
+      <x>402</x>
+      <y>285</y>
+      <w>9</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>lt=.&gt;</panel_attributes>
     <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
@@ -144,47 +143,47 @@ Robot : 1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1872</x>
-      <y>558</y>
-      <w>342</w>
-      <h>234</h>
+      <x>624</x>
+      <y>399</y>
+      <w>114</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Agent
 --
 - roundsNb : int
-+ currentActionState : ActionsState
+
 - policy : Policy
 --
 + Ctor()
 
 + GetAction(int) : int
-- GetRandomAction(int) : int
-- ChoseAction(int) : int
++ GetBestActions() : int[]
++ GetValuesMapByMatchesNb() : Dict&lt;int, Dict&lt;int, int&gt; &gt;
 
-+ ChangeActionState() : void
-+ GiveReinforcement() : void
-
-+ GetValuesMapByMatchesNb() : Dict&lt;int, Dict&lt;int, float&gt;</panel_attributes>
++ GiveReinforcement(int[] int[]) : void
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1809</x>
-      <y>891</y>
-      <w>468</w>
-      <h>117</h>
+      <x>603</x>
+      <y>489</y>
+      <w>156</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Policy
 --
-- &lt;static&gt; &lt;readonly&gt; _DEFAULT_VALUES_BY_OPTION_DICT : Dict&lt;int, float&gt;
+- &lt;static&gt; &lt;readonly&gt; _DEFAULT_VALUES_BY_OPTION_DICT : Dict&lt;int, int&gt;
 
-+ valuesMapByMatchesNb : Dict&lt;int, Dict&lt;int, float&gt; &gt;
++ valuesMapByMatchesNb : Dict&lt;int, Dict&lt;int, int&gt; &gt;
 --
-+ PickAction(int) : int
++Ctor()
+
+- AddMatchesNb(int) : void
++ GetAction(int) : int
 + UpdateValues(int, int, bool) : void
-+ HasEnoughInformation() : bool
-- AddStep(int) : void
+
 
 + ToString() : string</panel_attributes>
     <additional_attributes/>
@@ -192,21 +191,21 @@ Robot : 1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2034</x>
-      <y>783</y>
-      <w>27</w>
-      <h>126</h>
+      <x>678</x>
+      <y>456</y>
+      <w>9</w>
+      <h>39</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1413</x>
-      <y>207</y>
-      <w>324</w>
-      <h>153</h>
+      <x>471</x>
+      <y>276</y>
+      <w>108</w>
+      <h>51</h>
     </coordinates>
     <panel_attributes>Human
 --
@@ -221,10 +220,10 @@ Robot : 1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1413</x>
-      <y>378</y>
-      <w>324</w>
-      <h>189</h>
+      <x>471</x>
+      <y>333</y>
+      <w>108</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Robot
 --
@@ -241,27 +240,12 @@ Robot : 1</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1998</x>
-      <y>423</y>
-      <w>99</w>
-      <h>81</h>
-    </coordinates>
-    <panel_attributes>&lt;Enum&gt;
-ActionsState
---
-Random : 0
-Chosen : 1</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
-      <x>1314</x>
-      <y>306</y>
-      <w>117</w>
-      <h>108</h>
+      <x>438</x>
+      <y>309</y>
+      <w>39</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;100.0;110.0;10.0</additional_attributes>
@@ -269,10 +253,10 @@ Chosen : 1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1314</x>
-      <y>387</y>
-      <w>117</w>
-      <h>117</h>
+      <x>438</x>
+      <y>336</y>
+      <w>39</w>
+      <h>39</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;110.0;110.0</additional_attributes>
@@ -280,21 +264,10 @@ Chosen : 1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2034</x>
-      <y>495</y>
-      <w>27</w>
-      <h>81</h>
-    </coordinates>
-    <panel_attributes>lt=.&gt;</panel_attributes>
-    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>828</x>
-      <y>369</y>
-      <w>189</w>
-      <h>27</h>
+      <x>276</x>
+      <y>330</y>
+      <w>63</w>
+      <h>9</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;190.0;10.0</additional_attributes>
@@ -302,10 +275,10 @@ Chosen : 1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1566</x>
-      <y>558</y>
-      <w>324</w>
-      <h>135</h>
+      <x>522</x>
+      <y>393</y>
+      <w>108</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;340.0;130.0</additional_attributes>
@@ -313,10 +286,10 @@ Chosen : 1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>828</x>
-      <y>666</y>
-      <w>1062</w>
-      <h>180</h>
+      <x>276</x>
+      <y>429</y>
+      <w>354</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;180.0;1160.0;10.0</additional_attributes>
@@ -324,10 +297,10 @@ Chosen : 1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1053</x>
-      <y>162</y>
-      <w>99</w>
-      <h>81</h>
+      <x>351</x>
+      <y>261</y>
+      <w>33</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>&lt;Enum&gt;
 EndGameState
@@ -340,10 +313,10 @@ Loser : 2</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1089</x>
-      <y>234</y>
-      <w>27</w>
-      <h>81</h>
+      <x>363</x>
+      <y>285</y>
+      <w>9</w>
+      <h>27</h>
     </coordinates>
     <panel_attributes>lt=.&gt;</panel_attributes>
     <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
@@ -351,10 +324,10 @@ Loser : 2</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>2430</x>
-      <y>738</y>
-      <w>405</w>
-      <h>306</h>
+      <x>810</x>
+      <y>453</y>
+      <w>135</w>
+      <h>102</h>
     </coordinates>
     <panel_attributes>This dictionnary maps
 values to actions, to a number of matches
@@ -362,43 +335,40 @@ values to actions, to a number of matches
 Example
 {
    1 : {            // Number of matches
-      1 : 0.333     // Action : Value
-      2 : 0.333
-      3 : 0.333
+      1 : 5     // Action : Value
+      2 : 5
+      3 : 4
    },
    2 : {
-      1 : 0.997
-      2 : 0.001
-      3 : 0.002
+      1 : 15
+      2 : 0
+      3 : 1
    },
    ...
 }
 
 
-/*todo change*/
-
-bg=white
-fg=red</panel_attributes>
+bg=white</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2268</x>
-      <y>846</y>
-      <w>180</w>
-      <h>117</h>
+      <x>756</x>
+      <y>489</y>
+      <w>60</w>
+      <h>15</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;110.0;180.0;10.0</additional_attributes>
+    <additional_attributes>10.0;30.0;180.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>657</x>
-      <y>612</y>
-      <w>27</w>
-      <h>135</h>
+      <x>219</x>
+      <y>411</y>
+      <w>9</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
@@ -407,9 +377,9 @@ fg=red</panel_attributes>
     <id>UMLPackage</id>
     <coordinates>
       <x>0</x>
-      <y>450</y>
-      <w>252</w>
-      <h>162</h>
+      <y>357</y>
+      <w>84</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>View
 --</panel_attributes>
@@ -418,10 +388,10 @@ fg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>243</x>
-      <y>522</y>
-      <w>279</w>
-      <h>360</h>
+      <x>81</x>
+      <y>381</y>
+      <w>93</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;290.0;380.0</additional_attributes>
@@ -429,10 +399,10 @@ fg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>243</x>
-      <y>342</y>
-      <w>279</w>
-      <h>207</h>
+      <x>81</x>
+      <y>321</y>
+      <w>93</w>
+      <h>69</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;210.0;290.0;10.0</additional_attributes>
@@ -440,10 +410,10 @@ fg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>828</x>
-      <y>189</y>
-      <w>243</w>
-      <h>36</h>
+      <x>276</x>
+      <y>270</y>
+      <w>81</w>
+      <h>12</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
@@ -452,10 +422,10 @@ fg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>828</x>
-      <y>126</y>
-      <w>360</w>
-      <h>99</h>
+      <x>276</x>
+      <y>249</y>
+      <w>120</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>

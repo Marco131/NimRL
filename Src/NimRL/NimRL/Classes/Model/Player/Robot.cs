@@ -33,7 +33,7 @@ namespace NimRL.Classes.Model.Player
         public int GetAction(int matchesNb)
         {
             // todo implement GetAction
-            return 0;
+            return 1;
         }
 
 

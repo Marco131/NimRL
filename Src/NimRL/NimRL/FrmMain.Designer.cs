@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 10D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 20D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 3D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 10D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint8 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 20D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint9 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 3D);
             this.pnlTransparentArea = new System.Windows.Forms.Panel();
             this.pnlAIArea = new System.Windows.Forms.Panel();
             this.lblOptionsByMatchesNb = new System.Windows.Forms.Label();
@@ -64,11 +64,13 @@
             this.lblP2Name = new System.Windows.Forms.Label();
             this.btnP2_2 = new System.Windows.Forms.Button();
             this.btnP2_1 = new System.Windows.Forms.Button();
-            this.pbxFormIcon = new System.Windows.Forms.PictureBox();
             this.pnlMatches = new System.Windows.Forms.Panel();
             this.btnStartGame = new System.Windows.Forms.Button();
             this.cmbP1 = new System.Windows.Forms.ComboBox();
             this.cmbP2 = new System.Windows.Forms.ComboBox();
+            this.pbxFormIcon = new System.Windows.Forms.PictureBox();
+            this.lblP1Actions = new System.Windows.Forms.Label();
+            this.lblP2Actions = new System.Windows.Forms.Label();
             this.pnlTransparentArea.SuspendLayout();
             this.pnlAIArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -77,8 +79,8 @@
             this.pnlP1.SuspendLayout();
             this.pnlRvR.SuspendLayout();
             this.pnlP2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxFormIcon)).BeginInit();
             this.pnlMatches.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFormIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTransparentArea
@@ -117,18 +119,18 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
             this.chart1.Location = new System.Drawing.Point(5, 98);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.IsVisibleInLegend = false;
-            series2.Name = "Series1";
-            series2.Points.Add(dataPoint4);
-            series2.Points.Add(dataPoint5);
-            series2.Points.Add(dataPoint6);
-            this.chart1.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series3.IsVisibleInLegend = false;
+            series3.Name = "Series1";
+            series3.Points.Add(dataPoint7);
+            series3.Points.Add(dataPoint8);
+            series3.Points.Add(dataPoint9);
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(30, 30);
             this.chart1.TabIndex = 5;
             // 
@@ -254,20 +256,22 @@
             this.pnlP1.Controls.Add(this.btnP1_2);
             this.pnlP1.Controls.Add(this.btnP1_1);
             this.pnlP1.Controls.Add(this.lblP1Name);
+            this.pnlP1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.pnlP1.Location = new System.Drawing.Point(0, 300);
             this.pnlP1.Name = "pnlP1";
             this.pnlP1.Size = new System.Drawing.Size(250, 150);
             this.pnlP1.TabIndex = 4;
+            this.pnlP1.EnabledChanged += new System.EventHandler(this.pnlP1_EnabledChanged);
             // 
             // lblP1RobotMessage
             // 
             this.lblP1RobotMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblP1RobotMessage.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblP1RobotMessage.Location = new System.Drawing.Point(35, 60);
+            this.lblP1RobotMessage.Location = new System.Drawing.Point(20, 60);
             this.lblP1RobotMessage.Name = "lblP1RobotMessage";
-            this.lblP1RobotMessage.Size = new System.Drawing.Size(180, 35);
+            this.lblP1RobotMessage.Size = new System.Drawing.Size(210, 35);
             this.lblP1RobotMessage.TabIndex = 1;
-            this.lblP1RobotMessage.Text = "Robot is controled by AI";
+            this.lblP1RobotMessage.Text = "Robot is controlled by the AI";
             this.lblP1RobotMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblP1RobotMessage.Visible = false;
             // 
@@ -282,7 +286,7 @@
             this.btnP1_3.TabIndex = 3;
             this.btnP1_3.Text = "3";
             this.btnP1_3.UseVisualStyleBackColor = false;
-            this.btnP1_3.Click += new System.EventHandler(this.btnP1_3_Click);
+            this.btnP1_3.Click += new System.EventHandler(this.btnPlayer_Option_Click);
             // 
             // btnP1_2
             // 
@@ -295,7 +299,7 @@
             this.btnP1_2.TabIndex = 2;
             this.btnP1_2.Text = "2";
             this.btnP1_2.UseVisualStyleBackColor = false;
-            this.btnP1_2.Click += new System.EventHandler(this.btnP1_2_Click);
+            this.btnP1_2.Click += new System.EventHandler(this.btnPlayer_Option_Click);
             // 
             // btnP1_1
             // 
@@ -308,7 +312,7 @@
             this.btnP1_1.TabIndex = 1;
             this.btnP1_1.Text = "1";
             this.btnP1_1.UseVisualStyleBackColor = false;
-            this.btnP1_1.Click += new System.EventHandler(this.btnP1_1_Click);
+            this.btnP1_1.Click += new System.EventHandler(this.btnPlayer_Option_Click);
             // 
             // lblP1Name
             // 
@@ -343,7 +347,7 @@
             this.btnAutoPlay_100.TabIndex = 3;
             this.btnAutoPlay_100.Text = "100";
             this.btnAutoPlay_100.UseVisualStyleBackColor = false;
-            this.btnAutoPlay_100.Click += new System.EventHandler(this.btnAutoPlay_100_Click);
+            this.btnAutoPlay_100.Click += new System.EventHandler(this.btnAutoPlay_Option_Click);
             // 
             // lblAutoPlay
             // 
@@ -366,7 +370,7 @@
             this.btnAutoPlay_10.TabIndex = 2;
             this.btnAutoPlay_10.Text = "10";
             this.btnAutoPlay_10.UseVisualStyleBackColor = false;
-            this.btnAutoPlay_10.Click += new System.EventHandler(this.btnAutoPlay_10_Click);
+            this.btnAutoPlay_10.Click += new System.EventHandler(this.btnAutoPlay_Option_Click);
             // 
             // btnAutoPlay_1
             // 
@@ -379,7 +383,7 @@
             this.btnAutoPlay_1.TabIndex = 1;
             this.btnAutoPlay_1.Text = "1";
             this.btnAutoPlay_1.UseVisualStyleBackColor = false;
-            this.btnAutoPlay_1.Click += new System.EventHandler(this.btnAutoPlay_1_Click);
+            this.btnAutoPlay_1.Click += new System.EventHandler(this.btnAutoPlay_Option_Click);
             // 
             // pnlP2
             // 
@@ -393,16 +397,17 @@
             this.pnlP2.Name = "pnlP2";
             this.pnlP2.Size = new System.Drawing.Size(250, 150);
             this.pnlP2.TabIndex = 6;
+            this.pnlP2.EnabledChanged += new System.EventHandler(this.pnlP2_EnabledChanged);
             // 
             // lblP2RobotMessage
             // 
             this.lblP2RobotMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblP2RobotMessage.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblP2RobotMessage.Location = new System.Drawing.Point(35, 60);
+            this.lblP2RobotMessage.Location = new System.Drawing.Point(20, 60);
             this.lblP2RobotMessage.Name = "lblP2RobotMessage";
-            this.lblP2RobotMessage.Size = new System.Drawing.Size(180, 35);
+            this.lblP2RobotMessage.Size = new System.Drawing.Size(210, 35);
             this.lblP2RobotMessage.TabIndex = 1;
-            this.lblP2RobotMessage.Text = "Robot is controled by AI";
+            this.lblP2RobotMessage.Text = "Robot is controlled by the AI";
             this.lblP2RobotMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblP2RobotMessage.Visible = false;
             // 
@@ -417,7 +422,7 @@
             this.btnP2_3.TabIndex = 3;
             this.btnP2_3.Text = "3";
             this.btnP2_3.UseVisualStyleBackColor = false;
-            this.btnP2_3.Click += new System.EventHandler(this.btnP2_3_Click);
+            this.btnP2_3.Click += new System.EventHandler(this.btnPlayer_Option_Click);
             // 
             // lblP2Name
             // 
@@ -439,7 +444,7 @@
             this.btnP2_2.TabIndex = 2;
             this.btnP2_2.Text = "2";
             this.btnP2_2.UseVisualStyleBackColor = false;
-            this.btnP2_2.Click += new System.EventHandler(this.btnP2_2_Click);
+            this.btnP2_2.Click += new System.EventHandler(this.btnPlayer_Option_Click);
             // 
             // btnP2_1
             // 
@@ -452,23 +457,15 @@
             this.btnP2_1.TabIndex = 1;
             this.btnP2_1.Text = "1";
             this.btnP2_1.UseVisualStyleBackColor = false;
-            this.btnP2_1.Click += new System.EventHandler(this.btnP2_1_Click);
-            // 
-            // pbxFormIcon
-            // 
-            this.pbxFormIcon.Location = new System.Drawing.Point(3, 3);
-            this.pbxFormIcon.Name = "pbxFormIcon";
-            this.pbxFormIcon.Size = new System.Drawing.Size(19, 19);
-            this.pbxFormIcon.TabIndex = 5;
-            this.pbxFormIcon.TabStop = false;
+            this.btnP2_1.Click += new System.EventHandler(this.btnPlayer_Option_Click);
             // 
             // pnlMatches
             // 
             this.pnlMatches.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
             this.pnlMatches.Controls.Add(this.btnStartGame);
-            this.pnlMatches.Location = new System.Drawing.Point(150, 75);
+            this.pnlMatches.Location = new System.Drawing.Point(140, 60);
             this.pnlMatches.Name = "pnlMatches";
-            this.pnlMatches.Size = new System.Drawing.Size(500, 175);
+            this.pnlMatches.Size = new System.Drawing.Size(520, 205);
             this.pnlMatches.TabIndex = 2;
             // 
             // btnStartGame
@@ -476,7 +473,7 @@
             this.btnStartGame.BackColor = System.Drawing.Color.White;
             this.btnStartGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStartGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartGame.Location = new System.Drawing.Point(155, 60);
+            this.btnStartGame.Location = new System.Drawing.Point(166, 75);
             this.btnStartGame.Name = "btnStartGame";
             this.btnStartGame.Size = new System.Drawing.Size(190, 55);
             this.btnStartGame.TabIndex = 4;
@@ -497,9 +494,9 @@
             "Robot"});
             this.cmbP1.Location = new System.Drawing.Point(15, 85);
             this.cmbP1.Name = "cmbP1";
-            this.cmbP1.Size = new System.Drawing.Size(120, 24);
+            this.cmbP1.Size = new System.Drawing.Size(110, 24);
             this.cmbP1.TabIndex = 1;
-            this.cmbP1.SelectedIndexChanged += new System.EventHandler(this.cmbP1_SelectedIndexChanged);
+            this.cmbP1.SelectionChangeCommitted += new System.EventHandler(this.cmbP1_SelectionChangeCommitted);
             // 
             // cmbP2
             // 
@@ -512,11 +509,39 @@
             this.cmbP2.Items.AddRange(new object[] {
             "Human",
             "Robot"});
-            this.cmbP2.Location = new System.Drawing.Point(665, 85);
+            this.cmbP2.Location = new System.Drawing.Point(675, 85);
             this.cmbP2.Name = "cmbP2";
-            this.cmbP2.Size = new System.Drawing.Size(120, 24);
+            this.cmbP2.Size = new System.Drawing.Size(110, 24);
             this.cmbP2.TabIndex = 3;
-            this.cmbP2.SelectedIndexChanged += new System.EventHandler(this.cmbP2_SelectedIndexChanged);
+            this.cmbP2.SelectionChangeCommitted += new System.EventHandler(this.cmbP2_SelectionChangeCommitted);
+            // 
+            // pbxFormIcon
+            // 
+            this.pbxFormIcon.Image = global::NimRL.Properties.Resources.MatchstickIcon;
+            this.pbxFormIcon.Location = new System.Drawing.Point(3, 3);
+            this.pbxFormIcon.Name = "pbxFormIcon";
+            this.pbxFormIcon.Size = new System.Drawing.Size(19, 19);
+            this.pbxFormIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxFormIcon.TabIndex = 5;
+            this.pbxFormIcon.TabStop = false;
+            // 
+            // lblP1Actions
+            // 
+            this.lblP1Actions.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblP1Actions.Location = new System.Drawing.Point(15, 112);
+            this.lblP1Actions.Name = "lblP1Actions";
+            this.lblP1Actions.Size = new System.Drawing.Size(110, 32);
+            this.lblP1Actions.TabIndex = 8;
+            this.lblP1Actions.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblP2Actions
+            // 
+            this.lblP2Actions.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblP2Actions.Location = new System.Drawing.Point(675, 112);
+            this.lblP2Actions.Name = "lblP2Actions";
+            this.lblP2Actions.Size = new System.Drawing.Size(110, 32);
+            this.lblP2Actions.TabIndex = 9;
+            this.lblP2Actions.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FrmMain
             // 
@@ -524,6 +549,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 650);
+            this.Controls.Add(this.lblP2Actions);
+            this.Controls.Add(this.lblP1Actions);
             this.Controls.Add(this.cmbP2);
             this.Controls.Add(this.cmbP1);
             this.Controls.Add(this.pnlMatches);
@@ -547,8 +574,8 @@
             this.pnlP1.ResumeLayout(false);
             this.pnlRvR.ResumeLayout(false);
             this.pnlP2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbxFormIcon)).EndInit();
             this.pnlMatches.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFormIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -591,6 +618,8 @@
         private System.Windows.Forms.Button btnAutoPlay_10;
         private System.Windows.Forms.Button btnAutoPlay_1;
         private System.Windows.Forms.Button btnStartGame;
+        private System.Windows.Forms.Label lblP1Actions;
+        private System.Windows.Forms.Label lblP2Actions;
     }
 }
 

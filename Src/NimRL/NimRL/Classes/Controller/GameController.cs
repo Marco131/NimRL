@@ -29,7 +29,7 @@ namespace NimRL.Classes.Controller
         private bool _hasGameEnded;
 
         // Properties
-        private AIController _AIController { get => _aiController; private set => _aiController = value; }
+        private AIController _AIController { get => _aiController; set => _aiController = value; }
 
         public Player Player1 { get => _player1; private set => _player1 = value; }
         public Player Player2 { get => _player2; private set => _player2 = value; }
@@ -117,21 +117,19 @@ namespace NimRL.Classes.Controller
             }
         }
 
+        public void EndGamePreventively()
+        {
+            this.HasGameEnded = true;
+            this._MatchesNb = 0;
+        }
+
         /// <summary>
         /// Get the number of matches left on the ongoing game
         /// </summary>
         /// <returns>Number of matches left</returns>
-        /// <exception cref="Exception">Thrown if the game is not ongoing</exception>
         public int GetMatchesNb()
         {
-            if (!this.HasGameEnded)
-            {
-                return this._MatchesNb;
-            }
-            else
-            {
-                throw new Exception("The game is not ongoing");
-            }
+            return this._MatchesNb;
         }
 
         /// <summary>

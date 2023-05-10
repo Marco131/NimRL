@@ -52,8 +52,7 @@ namespace NimRL.Classes.Model.AI
 
         public Dictionary<int, Dictionary<int, int>> GetValuesMapByMatchesNb()
         {
-            // todo implement GetValuesMapByMatchesNb
-            return new Dictionary<int, Dictionary<int, int>>();
+            return this._Policy.ValuesMapByMatchesNb;
         }
 
         /// <summary>

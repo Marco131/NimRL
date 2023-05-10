@@ -297,7 +297,7 @@ namespace NimRL.Classes.Controller
                 {
                     PrepareGame();
 
-                    RequestRobotAction(GetCurrentPlayer() as Robot);
+                    // RequestRobotAction(GetCurrentPlayer() as Robot);
                 }
             }
             else
@@ -397,6 +397,11 @@ namespace NimRL.Classes.Controller
         /// <param name="robot"></param>
         private void RequestRobotAction(Robot robot)
         {
+            if (this._MatchesNb == 0)
+            {
+                System.Diagnostics.Debug.WriteLine("");
+            }
+
             int action = robot.GetAction(this._MatchesNb);
 
             ContinuePlaying(action);

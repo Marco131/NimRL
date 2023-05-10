@@ -6,13 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using NimRL.Classes.Model.Player;
 using NimRL.Classes.Model.AI;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace NimRL.Classes.Controller
 {
     public class AIController
     {
         // Constants
-        // todo optimized choices const list
+        private static readonly List<int> _OPTIMIZED_CHOICES = new List<int>()
+        {
+            0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3
+        };
         private const int _INITIAL_ROUNDS_NB = 0;
 
         // Fields
@@ -43,8 +47,39 @@ namespace NimRL.Classes.Controller
 
         public float CalculateLearningPercentage()
         {
-            // todo implement CalculateLearningPercentage
-            return 0;
+            const int INDIFERENT_CHOICE = 0;
+            const int IMPORTANT_CHOICES_NB = 20 - (20 / 4); // use const
+
+            float percentageSum = 0;
+            Dictionary<int, Dictionary<int, int>> valuesMapByMatchesNb = this.Agent.GetValuesMapByMatchesNb();
+            for (int i = 20; i >= 1; i--) // todo use const
+            {
+                if (valuesMapByMatchesNb.ContainsKey(i))
+                {
+                    Dictionary<int, int> valueByActionDict = valuesMapByMatchesNb[i];
+
+                    int optimizedAction = AIController._OPTIMIZED_CHOICES[i-1];
+                    if (optimizedAction != INDIFERENT_CHOICE)
+                    {
+                        // find highest valued action and it's percentage
+                        KeyValuePair<int, int> highestValuedAction = valueByActionDict.ElementAt(0);
+                        for (int j = 1; j < valueByActionDict.Count; j++)
+                        {
+                            KeyValuePair<int, int> currentAction = valueByActionDict.ElementAt(j);
+                            if (currentAction.Value > highestValuedAction.Value)
+                            {
+                                highestValuedAction = currentAction;
+                            }
+                        }
+
+                        float highestValuedActionPercentage =  (float)highestValuedAction.Value / valueByActionDict.Values.Sum();
+
+                        percentageSum += highestValuedActionPercentage;
+                    }
+                }
+            }
+
+            return percentageSum / IMPORTANT_CHOICES_NB;
         }
 
         /// <summary>

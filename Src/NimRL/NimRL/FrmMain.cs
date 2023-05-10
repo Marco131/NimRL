@@ -84,6 +84,8 @@ namespace NimRL
         /// </summary>
         private void UpdateView()
         {
+            this._aiController.CalculateLearningPercentage();
+
             // If the game has ended
             if (this._gameController.HasGameEnded)
             {

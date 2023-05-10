@@ -13,7 +13,7 @@ namespace NimRL.Classes.Model.AI
         private const int _ACTION2 = 2;
         private const int _ACTION3 = 3;
 
-        private const int _DEFAULT_VALUE = 5;
+        private const int _DEFAULT_VALUE = 50;
 
         private static readonly Dictionary<int, int> _DEFAULT_VALUES_BY_ACTION_DICT = new Dictionary<int, int>() 
         {

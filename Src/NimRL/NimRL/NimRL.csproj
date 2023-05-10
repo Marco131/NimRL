@@ -91,12 +91,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\Ressources\MatchsitckIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\Ressources\Matchsitck.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Properties\Ressources\Matchstick.png" />
   </ItemGroup>
   <ItemGroup>

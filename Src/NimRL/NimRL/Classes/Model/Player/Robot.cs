@@ -30,10 +30,15 @@ namespace NimRL.Classes.Model.Player
 
 
         // Methods
+        /// <summary>
+        /// Gets an action from the agent
+        /// </summary>
+        /// <param name="matchesNb"></param>
+        /// <returns>Action</returns>
         public int GetAction(int matchesNb)
         {
-            // todo implement GetAction
-            return 1;
+            int action = this.Agent.GetAction(matchesNb);
+            return action;
         }
 
 

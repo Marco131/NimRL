@@ -239,7 +239,7 @@ namespace NimRL.Classes.Controller
             {
                 Player winner;
 
-                if (this.Player1.CurrentEndGameState == EndGameState.Winner)
+                if (this.Player1.IsTheWinner())
                 {
                     winner = this.Player1;
                 }
@@ -267,7 +267,7 @@ namespace NimRL.Classes.Controller
             {
                 Player loser;
 
-                if (this.Player1.CurrentEndGameState == EndGameState.Loser)
+                if (this.Player1.IsTheLoser())
                 {
                     loser = this.Player1;
                 }
@@ -284,7 +284,11 @@ namespace NimRL.Classes.Controller
             }
         }
 
-
+        /// <summary>
+        /// Play a certain number of games automatically
+        /// </summary>
+        /// <param name="nbOfGames"></param>
+        /// <exception cref="Exception">Throws an error if the current mode isn't robot vs robot</exception>
         public void PlayGameAutomatically(int nbOfGames)
         {
             if (IsRvR())
@@ -302,6 +306,10 @@ namespace NimRL.Classes.Controller
             }
         }
         
+        /// <summary>
+        /// Continue playing with the action passed by parameter
+        /// </summary>
+        /// <param name="matches"></param>
         public void ContinuePlaying(int matches)
         {
             if (!this.HasGameEnded)
@@ -328,10 +336,14 @@ namespace NimRL.Classes.Controller
             }
         }
 
+        /// <summary>
+        /// End the game
+        /// </summary>
         private void EndGame()
         {
             this.HasGameEnded = true;
 
+            // define winner loser
             if (GetCurrentPlayer() == this.Player1)
             {
                 this.Player1.ChangeCurrentEndGameState(EndGameState.Winner);
@@ -343,13 +355,21 @@ namespace NimRL.Classes.Controller
                 this.Player2.ChangeCurrentEndGameState(EndGameState.Winner);
             }
 
-            // Update AI
+            // request reinforcement
             int[][] playersGameActions = GetPlayersGameActions();
             if (playersGameActions.Length == 2)
             {
                 int[] p1GameAction = playersGameActions[0];
                 int[] p2GameAction = playersGameActions[1];
-                this._AIController.RequestReinforcementUpdate(p1GameAction, p2GameAction);
+
+                if (this.Player1.IsTheWinner())
+                {
+                    this._AIController.RequestReinforcementUpdate(p2GameAction, p1GameAction);
+                }
+                else // player2 is the winner
+                {
+                    this._AIController.RequestReinforcementUpdate(p1GameAction, p2GameAction);
+                }
             }
         }
 
@@ -360,11 +380,21 @@ namespace NimRL.Classes.Controller
         /// <param name="matchesToDeduct"></param>
         private void PickMatches(Player player, int matchesToDeduct)
         {
+            // level matches to deduct
+            if (matchesToDeduct > this._MatchesNb)
+            {
+                matchesToDeduct = this._MatchesNb;
+            }
+
             this._MatchesNb -= matchesToDeduct;
 
             player.UpdateLastChosenAction(matchesToDeduct);
         }
 
+        /// <summary>
+        /// Requests an action from a robot to continue playing
+        /// </summary>
+        /// <param name="robot"></param>
         private void RequestRobotAction(Robot robot)
         {
             int action = robot.GetAction(this._MatchesNb);

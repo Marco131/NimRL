@@ -13,7 +13,7 @@ namespace NimRL.Classes.Controller
     {
         // Constants
         // todo optimized choices const list
-        private const int _DEFAULT_ROUNDS_NB = 0;
+        private const int _INITIAL_ROUNDS_NB = 0;
 
         // Fields
         private int _roundsNb;
@@ -28,18 +28,13 @@ namespace NimRL.Classes.Controller
         // Ctor
         public AIController()
         {
-            this.RoundsNb = AIController._DEFAULT_ROUNDS_NB;
-            // todo instantiate Agent
+            this.RoundsNb = AIController._INITIAL_ROUNDS_NB;
+
+            this.Agent = new Agent();
         }
 
 
         // Methods
-        public string GetActionState()
-        {
-            // todo implement GetActionState
-            return "";
-        }
-
         public Dictionary<int, Dictionary<int, float>> GetActionValues()
         {
             // todo implement GetActionValues
@@ -52,10 +47,16 @@ namespace NimRL.Classes.Controller
             return 0;
         }
 
-
-        public void RequestReinforcementUpdate(int[] p1Actions, int[] p2Actions)
+        /// <summary>
+        /// Calls the agent to give reinforcement for the actions of a round, increments the number of rounds
+        /// </summary>
+        /// <param name="loserActions">List of actions from the player that lost</param>
+        /// <param name="winnerActions">List of actions from the player that won</param>
+        public void RequestReinforcementUpdate(int[] loserActions, int[] winnerActions)
         {
-            // todo implement RequestReinforcementUpdate
+            this.Agent.GiveReinforcement(loserActions, winnerActions);
+
+            this.RoundsNb += 1;
         }
     }
 }

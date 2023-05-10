@@ -33,10 +33,15 @@ namespace NimRL.Classes.Model.AI
 
 
         // Methods
-        public int GetAction()
+        /// <summary>
+        /// Get an action from the policy
+        /// </summary>
+        /// <param name="matchesNb"></param>
+        /// <returns>Action</returns>
+        public int GetAction(int matchesNb)
         {
-            // todo implement GetAction
-            return 0;
+            int action = this._Policy.GetAction(matchesNb);
+            return action;
         }
         
         public int[] GetBestActions()
@@ -51,10 +56,46 @@ namespace NimRL.Classes.Model.AI
             return new Dictionary<int, Dictionary<int, int>>();
         }
 
-
+        /// <summary>
+        /// Give a reinforcement to the actions of a game
+        /// </summary>
+        /// <param name="loserActions">Action of the player that lost</param>
+        /// <param name="winnerActions">Action of the player that won</param>
         public void GiveReinforcement(int[] loserActions, int[] winnerActions)
         {
-            // todo implement GiveReinforcement
+            List<int> loserActionsList = loserActions.ToList();
+            List<int> winnerActionsList = winnerActions.ToList();
+
+            // simulate the game in reverse to give reinforcement to each action
+            int simulatedMatchesNb = 0;
+            bool isLosersTurn = true;
+            while (loserActionsList.Count + winnerActionsList.Count > 0)
+            {
+                int action;
+                int lastIndex;
+                if (isLosersTurn)
+                {
+                    lastIndex = loserActionsList.Count - 1;
+
+                    // get their last action then remove it from the list
+                    action = loserActionsList[lastIndex];
+                    loserActionsList.RemoveAt(lastIndex);
+                }
+                else // is winners turn
+                {
+                    lastIndex = winnerActionsList.Count - 1;
+
+                    // get their last action then remove it from the list
+                    action = winnerActionsList[lastIndex];
+                    winnerActionsList.RemoveAt(lastIndex);
+                }
+
+                simulatedMatchesNb += action;
+                this._Policy.UpdateValue(simulatedMatchesNb, action, !isLosersTurn);
+
+                // switch turns
+                isLosersTurn = !isLosersTurn;
+            }
         }
     }
 }

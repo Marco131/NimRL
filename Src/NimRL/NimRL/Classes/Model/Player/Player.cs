@@ -95,6 +95,30 @@ namespace NimRL.Classes.Model.Player
             this.LastChosenAction = null;
         }
 
+        /// <summary>
+        /// Return whether the player is a winner or not
+        /// </summary>
+        /// <remarks>
+        /// The player not being the winner doesn't imply that he's the loser, he could be neither one
+        /// </remarks>
+        /// <returns>True if the player is a winner, else false</returns>
+        public bool IsTheWinner()
+        {
+            return this.CurrentEndGameState == EndGameState.Winner;
+        }
+
+        /// <summary>
+        /// Return whether the player is a loser or not
+        /// </summary>
+        /// <remarks>
+        /// The player not being the loser doesn't imply that he's the winner, he could be neither one
+        /// </remarks>
+        /// <returns>True if the player is a loser, else false</returns>
+        public bool IsTheLoser()
+        {
+            return this.CurrentEndGameState == EndGameState.Loser;
+        }
+
         public abstract string GetName();
 
         public override string ToString()

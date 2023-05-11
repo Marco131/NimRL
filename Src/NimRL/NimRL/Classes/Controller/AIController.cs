@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using NimRL.Classes.Model.Player;
 using NimRL.Classes.Model.AI;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Runtime.Serialization;
 
 namespace NimRL.Classes.Controller
 {
@@ -17,42 +18,43 @@ namespace NimRL.Classes.Controller
         {
             0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3
         };
-        private const int _INITIAL_ROUNDS_NB = 0;
 
         // Fields
-        private int _roundsNb;
         private Agent _agent;
+
+        private Action _updateAIDisplay;
 
 
         // Properties
-        public int RoundsNb { get => _roundsNb; private set => _roundsNb = value; }
         public Agent Agent { get => _agent; private set => _agent = value; }
+        private Action _UpdateAIDisplay { get => _updateAIDisplay; set => _updateAIDisplay = value; }
 
 
         // Ctor
-        public AIController()
+        public AIController(Action UpdateAIDisplay)
         {
-            this.RoundsNb = AIController._INITIAL_ROUNDS_NB;
-
             this.Agent = new Agent();
+
+            this._UpdateAIDisplay = UpdateAIDisplay;
         }
+
+        public AIController() {}
 
 
         // Methods
-        public Dictionary<int, Dictionary<int, float>> GetActionValues()
+        public Dictionary<int, Dictionary<int, int>> GetActionValues()
         {
-            // todo implement GetActionValues
-            return new Dictionary<int, Dictionary<int, float>>();
+            return this.Agent.GetValuesMapByMatchesNb();
         }
 
         public float CalculateLearningPercentage()
         {
             const int INDIFERENT_CHOICE = 0;
-            const int IMPORTANT_CHOICES_NB = 20 - (20 / 4); // use const
+            const int IMPORTANT_CHOICES_NB = GameController.INITIAL_MATCHES_NB - (GameController.INITIAL_MATCHES_NB / 4);
 
             float percentageSum = 0;
             Dictionary<int, Dictionary<int, int>> valuesMapByMatchesNb = this.Agent.GetValuesMapByMatchesNb();
-            for (int i = 20; i >= 1; i--) // todo use const
+            for (int i = GameController.INITIAL_MATCHES_NB; i >= 1; i--)
             {
                 if (valuesMapByMatchesNb.ContainsKey(i))
                 {
@@ -83,7 +85,7 @@ namespace NimRL.Classes.Controller
         }
 
         /// <summary>
-        /// Calls the agent to give reinforcement for the actions of a round, increments the number of rounds
+        /// Calls the agent to give reinforcement for the actions of a round
         /// </summary>
         /// <param name="loserActions">List of actions from the player that lost</param>
         /// <param name="winnerActions">List of actions from the player that won</param>
@@ -91,7 +93,7 @@ namespace NimRL.Classes.Controller
         {
             this.Agent.GiveReinforcement(loserActions, winnerActions);
 
-            this.RoundsNb += 1;
+            this._UpdateAIDisplay();
         }
     }
 }

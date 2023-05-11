@@ -19,14 +19,14 @@ namespace NimRL.Classes.Model.AI
 
 
         // Properties
-        private int _RoundsNb { get => _roundsNb; set => _roundsNb = value; }
+        public int RoundsNb { get => _roundsNb; private set => _roundsNb = value; }
         private Policy _Policy { get => _policy; set => _policy = value; }
 
 
         // Ctor
         public Agent()
         {
-            this._RoundsNb = Agent._INITIAL_ROUNDS_NB;
+            this.RoundsNb = Agent._INITIAL_ROUNDS_NB;
 
             this._Policy = new Policy();
         }
@@ -95,6 +95,8 @@ namespace NimRL.Classes.Model.AI
                 // switch turns
                 isLosersTurn = !isLosersTurn;
             }
+
+            this.RoundsNb += 1;
         }
     }
 }

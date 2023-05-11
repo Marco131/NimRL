@@ -27,6 +27,7 @@ namespace NimRL.Classes.Model.Player
         {
             this.Agent = agent;
         }
+        public Robot() : base(_TYPE) { }
 
 
         // Methods

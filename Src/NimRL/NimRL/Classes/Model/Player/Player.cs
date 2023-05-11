@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace NimRL.Classes.Model.Player
 {
+    [XmlInclude(typeof(Human))]
+    [XmlInclude(typeof(Robot))]
     public abstract class Player
     {
         // Fields
@@ -73,7 +76,7 @@ namespace NimRL.Classes.Model.Player
         /// <exception cref="Exception">Throws exception there's no last chosen action</exception>
         protected void AddActionToList()
         {
-            // if LastChosenAction isn't null add it to the list, if it is throw an exception
+            // if LastChosenAction isn't null add it to the list, if it is, throw an exception
             this.GameActions.Add(
                 this.LastChosenAction ?? throw new Exception("The player hasn't chose an action yet")
             );

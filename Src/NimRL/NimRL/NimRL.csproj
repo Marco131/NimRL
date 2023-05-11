@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\BackupManager.cs" />
     <Compile Include="Classes\Controller\AIController.cs" />
     <Compile Include="Classes\Controller\GameController.cs" />
     <Compile Include="Classes\Model\AI\Agent.cs" />

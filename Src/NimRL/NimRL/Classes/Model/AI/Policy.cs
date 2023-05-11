@@ -13,7 +13,7 @@ namespace NimRL.Classes.Model.AI
         private const int _ACTION2 = 2;
         private const int _ACTION3 = 3;
 
-        private const int _DEFAULT_VALUE = 50;
+        private const int _DEFAULT_VALUE = 100;
 
         private static readonly Dictionary<int, int> _DEFAULT_VALUES_BY_ACTION_DICT = new Dictionary<int, int>() 
         {
@@ -24,7 +24,15 @@ namespace NimRL.Classes.Model.AI
 
 
         // Fields
-        private Dictionary<int, Dictionary<int, int>> _valuesMapByMatchesNb; // todo explain map
+        private Dictionary<int, Dictionary<int, int>> _valuesMapByMatchesNb; // Maps values to actions to a number of matches;
+                                                                             // <number of matches, <action, value>>
+                                                                             // number of matches   : [1, 20]
+                                                                             // action : 1, 2, 3
+                                                                             // value  : N
+                                                                             //
+                                                                             // The dict doesn't have default values, when updating values
+                                                                             // if the step doesn't exist it is added
+
         private Random _random; 
 
         // Properties

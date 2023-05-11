@@ -28,15 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 10D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 20D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 3D);
             this.pnlTransparentArea = new System.Windows.Forms.Panel();
             this.pnlAIArea = new System.Windows.Forms.Panel();
             this.lblOptionsByMatchesNb = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pnlLearningBarContainer = new System.Windows.Forms.Panel();
             this.pnlLearningBar = new System.Windows.Forms.Panel();
             this.lblLearning = new System.Windows.Forms.Label();
@@ -44,6 +38,7 @@
             this.lblAIArea = new System.Windows.Forms.Label();
             this.btnOpenCloseAIArea = new System.Windows.Forms.Button();
             this.pnlTitleBar = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnMinimizeForm = new System.Windows.Forms.Button();
             this.btnCloseForm = new System.Windows.Forms.Button();
@@ -73,7 +68,6 @@
             this.lblP2Actions = new System.Windows.Forms.Label();
             this.pnlTransparentArea.SuspendLayout();
             this.pnlAIArea.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.pnlLearningBarContainer.SuspendLayout();
             this.pnlTitleBar.SuspendLayout();
             this.pnlP1.SuspendLayout();
@@ -95,8 +89,8 @@
             // pnlAIArea
             // 
             this.pnlAIArea.BackColor = System.Drawing.Color.White;
+            this.pnlAIArea.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlAIArea.Controls.Add(this.lblOptionsByMatchesNb);
-            this.pnlAIArea.Controls.Add(this.chart1);
             this.pnlAIArea.Controls.Add(this.pnlLearningBarContainer);
             this.pnlAIArea.Controls.Add(this.lblLearning);
             this.pnlAIArea.Controls.Add(this.lblRounds);
@@ -117,23 +111,6 @@
             this.lblOptionsByMatchesNb.Text = "Options by number of matches : ";
             this.lblOptionsByMatchesNb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // chart1
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.Location = new System.Drawing.Point(5, 98);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.IsVisibleInLegend = false;
-            series1.Name = "Series1";
-            series1.Points.Add(dataPoint1);
-            series1.Points.Add(dataPoint2);
-            series1.Points.Add(dataPoint3);
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(30, 30);
-            this.chart1.TabIndex = 5;
-            // 
             // pnlLearningBarContainer
             // 
             this.pnlLearningBarContainer.BackColor = System.Drawing.SystemColors.Control;
@@ -150,7 +127,7 @@
             this.pnlLearningBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlLearningBar.Location = new System.Drawing.Point(-1, -1);
             this.pnlLearningBar.Name = "pnlLearningBar";
-            this.pnlLearningBar.Size = new System.Drawing.Size(541, 20);
+            this.pnlLearningBar.Size = new System.Drawing.Size(0, 20);
             this.pnlLearningBar.TabIndex = 0;
             // 
             // lblLearning
@@ -200,6 +177,7 @@
             // 
             this.pnlTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(64)))), ((int)(((byte)(87)))));
             this.pnlTitleBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTitleBar.Controls.Add(this.button1);
             this.pnlTitleBar.Controls.Add(this.lblTitle);
             this.pnlTitleBar.Controls.Add(this.btnMinimizeForm);
             this.pnlTitleBar.Controls.Add(this.btnCloseForm);
@@ -210,6 +188,17 @@
             this.pnlTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTitleBar_MouseDown);
             this.pnlTitleBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTitleBar_MouseMove);
             this.pnlTitleBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlTitleBar_MouseUp);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(727, -1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(25, 25);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "?";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // lblTitle
             // 
@@ -230,7 +219,7 @@
             this.btnMinimizeForm.Location = new System.Drawing.Point(751, -1);
             this.btnMinimizeForm.Name = "btnMinimizeForm";
             this.btnMinimizeForm.Size = new System.Drawing.Size(25, 25);
-            this.btnMinimizeForm.TabIndex = 1;
+            this.btnMinimizeForm.TabIndex = 2;
             this.btnMinimizeForm.Text = "--";
             this.btnMinimizeForm.UseVisualStyleBackColor = false;
             this.btnMinimizeForm.Click += new System.EventHandler(this.btnMinimizeForm_Click);
@@ -243,7 +232,7 @@
             this.btnCloseForm.Location = new System.Drawing.Point(775, -1);
             this.btnCloseForm.Name = "btnCloseForm";
             this.btnCloseForm.Size = new System.Drawing.Size(25, 25);
-            this.btnCloseForm.TabIndex = 2;
+            this.btnCloseForm.TabIndex = 3;
             this.btnCloseForm.Text = "X";
             this.btnCloseForm.UseVisualStyleBackColor = false;
             this.btnCloseForm.Click += new System.EventHandler(this.btnCloseForm_Click);
@@ -256,6 +245,7 @@
             this.pnlP1.Controls.Add(this.btnP1_2);
             this.pnlP1.Controls.Add(this.btnP1_1);
             this.pnlP1.Controls.Add(this.lblP1Name);
+            this.pnlP1.Enabled = false;
             this.pnlP1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.pnlP1.Location = new System.Drawing.Point(0, 300);
             this.pnlP1.Name = "pnlP1";
@@ -335,6 +325,7 @@
             this.pnlRvR.Name = "pnlRvR";
             this.pnlRvR.Size = new System.Drawing.Size(300, 150);
             this.pnlRvR.TabIndex = 5;
+            this.pnlRvR.Visible = false;
             // 
             // btnAutoPlay_100
             // 
@@ -393,6 +384,7 @@
             this.pnlP2.Controls.Add(this.lblP2Name);
             this.pnlP2.Controls.Add(this.btnP2_2);
             this.pnlP2.Controls.Add(this.btnP2_1);
+            this.pnlP2.Enabled = false;
             this.pnlP2.Location = new System.Drawing.Point(550, 300);
             this.pnlP2.Name = "pnlP2";
             this.pnlP2.Size = new System.Drawing.Size(250, 150);
@@ -564,11 +556,11 @@
             this.MaximizeBox = false;
             this.Name = "FrmMain";
             this.Text = "W";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.pnlTransparentArea.ResumeLayout(false);
             this.pnlAIArea.ResumeLayout(false);
             this.pnlAIArea.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.pnlLearningBarContainer.ResumeLayout(false);
             this.pnlTitleBar.ResumeLayout(false);
             this.pnlP1.ResumeLayout(false);
@@ -598,7 +590,6 @@
         private System.Windows.Forms.Label lblLearning;
         private System.Windows.Forms.Panel pnlLearningBarContainer;
         private System.Windows.Forms.Panel pnlLearningBar;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Label lblOptionsByMatchesNb;
         private System.Windows.Forms.Panel pnlMatches;
         private System.Windows.Forms.ComboBox cmbP1;
@@ -620,6 +611,7 @@
         private System.Windows.Forms.Button btnStartGame;
         private System.Windows.Forms.Label lblP1Actions;
         private System.Windows.Forms.Label lblP2Actions;
+        private System.Windows.Forms.Button button1;
     }
 }
 

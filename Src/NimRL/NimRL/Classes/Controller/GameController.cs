@@ -14,8 +14,11 @@ namespace NimRL.Classes.Controller
     public class GameController
     {
         // Constants
-        private const int _DEFAULT_PLAYER = 1;
-        private const int _MATCHES_NB = 20;
+        private static readonly Player _DEFAULT_PLAYER1 = new Human();
+        private static readonly Player _DEFAULT_PLAYER2 = new Human();
+
+        private const int _DEFAULT_PLAYER_NB = 1;
+        public const int INITIAL_MATCHES_NB = 20;
 
 
         // Fields
@@ -28,6 +31,11 @@ namespace NimRL.Classes.Controller
         private int _matchesNb;
         private bool _hasGameEnded;
 
+        private Action _updateView_Play;
+        private Action _updateView_EndedGame;
+        private Action _updateView_GameStart;
+
+
         // Properties
         private AIController _AIController { get => _aiController; set => _aiController = value; }
 
@@ -35,9 +43,9 @@ namespace NimRL.Classes.Controller
         public Player Player2 { get => _player2; private set => _player2 = value; }
         public int CurrentPlayerNb { get => _currentPlayerNb; private set => _currentPlayerNb = value; }
 
-        private int _MatchesNb { 
+        public int MatchesNb { 
             get => _matchesNb;
-            set { 
+            private set { 
                 if(value < 0)
                 {
                     value = 0;
@@ -47,17 +55,25 @@ namespace NimRL.Classes.Controller
             } 
         }
         public bool HasGameEnded { get => _hasGameEnded; private set => _hasGameEnded = value; }
+        
+        private Action _UpdateView_Play { get => _updateView_Play; set => _updateView_Play = value; }
+        private Action _UpdateView_EndedGame { get => _updateView_EndedGame; set => _updateView_EndedGame = value; }
+        private Action _UpdateView_GameStart { get => _updateView_GameStart; set => _updateView_GameStart = value; }
 
 
         // Ctor
-        public GameController(Player initialPlayer1, Player initialPlayer2, AIController aiController)
+        public GameController(AIController aiController, Action UpdateView_Play, Action UpdateView_EndedGame, Action UpdateView_GameStart)
         {
-            this.Player1 = initialPlayer1;
-            this.Player2 = initialPlayer2;
+            this.Player1 = GameController._DEFAULT_PLAYER1;
+            this.Player2 = GameController._DEFAULT_PLAYER2;
 
             this._AIController = aiController;
 
-            PrepareGame();
+            this._UpdateView_Play = UpdateView_Play;
+            this._UpdateView_EndedGame = UpdateView_EndedGame;
+            this._UpdateView_GameStart = UpdateView_GameStart;
+
+            this.HasGameEnded = true;
         }
 
 
@@ -102,12 +118,17 @@ namespace NimRL.Classes.Controller
         {
             this.HasGameEnded = false;
 
-            this.CurrentPlayerNb = GameController._DEFAULT_PLAYER;
-            this._MatchesNb = GameController._MATCHES_NB;
+            this.CurrentPlayerNb = GameController._DEFAULT_PLAYER_NB;
+            this.MatchesNb = GameController.INITIAL_MATCHES_NB;
 
             // prepare players
             this.Player1.PrepareForNewGame();
             this.Player2.PrepareForNewGame();
+
+            if (!IsRvR())
+            {
+                this._UpdateView_GameStart();
+            }
 
             // if the first player is a robot request action
             Player currentPlayer = GetCurrentPlayer();
@@ -120,7 +141,9 @@ namespace NimRL.Classes.Controller
         public void EndGamePreventively()
         {
             this.HasGameEnded = true;
-            this._MatchesNb = 0;
+            this.MatchesNb = 0;
+
+            this._UpdateView_EndedGame();
         }
 
         /// <summary>
@@ -129,7 +152,7 @@ namespace NimRL.Classes.Controller
         /// <returns>Number of matches left</returns>
         public int GetMatchesNb()
         {
-            return this._MatchesNb;
+            return this.MatchesNb;
         }
 
         /// <summary>
@@ -296,9 +319,9 @@ namespace NimRL.Classes.Controller
                 for (int i = 0; i < nbOfGames; i++)
                 {
                     PrepareGame();
-
-                    // RequestRobotAction(GetCurrentPlayer() as Robot);
                 }
+
+                this._UpdateView_EndedGame();
             }
             else
             {
@@ -319,7 +342,7 @@ namespace NimRL.Classes.Controller
                 ChangeCurrentPlayer();
 
                 // check if game has ended
-                if (this._MatchesNb == 0)
+                if (this.MatchesNb == 0)
                 {
                     EndGame();
                 }
@@ -332,7 +355,13 @@ namespace NimRL.Classes.Controller
                     }
 
                     // else wait until the human player plays
+
+                    if (!IsRvR())
+                    {
+                        this._UpdateView_Play();
+                    }
                 }
+
             }
         }
 
@@ -355,6 +384,11 @@ namespace NimRL.Classes.Controller
                 this.Player2.ChangeCurrentEndGameState(EndGameState.Winner);
             }
 
+            if (!IsRvR())
+            {
+                this._UpdateView_EndedGame();
+            }
+
             // request reinforcement
             int[][] playersGameActions = GetPlayersGameActions();
             if (playersGameActions.Length == 2)
@@ -371,6 +405,8 @@ namespace NimRL.Classes.Controller
                     this._AIController.RequestReinforcementUpdate(p1GameAction, p2GameAction);
                 }
             }
+
+
         }
 
         /// <summary>
@@ -381,12 +417,12 @@ namespace NimRL.Classes.Controller
         private void PickMatches(Player player, int matchesToDeduct)
         {
             // level matches to deduct
-            if (matchesToDeduct > this._MatchesNb)
+            if (matchesToDeduct > this.MatchesNb)
             {
-                matchesToDeduct = this._MatchesNb;
+                matchesToDeduct = this.MatchesNb;
             }
 
-            this._MatchesNb -= matchesToDeduct;
+            this.MatchesNb -= matchesToDeduct;
 
             player.UpdateLastChosenAction(matchesToDeduct);
         }
@@ -397,12 +433,7 @@ namespace NimRL.Classes.Controller
         /// <param name="robot"></param>
         private void RequestRobotAction(Robot robot)
         {
-            if (this._MatchesNb == 0)
-            {
-                System.Diagnostics.Debug.WriteLine("");
-            }
-
-            int action = robot.GetAction(this._MatchesNb);
+            int action = robot.GetAction(this.MatchesNb);
 
             ContinuePlaying(action);
         }
